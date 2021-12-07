@@ -1,0 +1,300 @@
+{
+
+    "extends": ["prettier", "plugin:@typescript-eslint/recommended"],
+    "plugins": [
+        "prettier",
+        "@typescript-eslint",
+        "react",
+        "react-hooks"
+    ],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "ecmaVersion": 2016,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "settings": {
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+          "typescript": {}
+        }
+    },
+    "rules": {
+        "for-direction": 2,
+        "getter-return": 2,
+        "no-async-promise-executor": 2,
+        "no-await-in-loop": 2,
+        "no-compare-neg-zero": 2,
+        "no-cond-assign": [
+            2,
+            "except-parens"
+        ],
+        "no-console": 1,
+        "no-constant-condition": 2,
+        "no-control-regex": 2,
+        "no-debugger": 1,
+        "no-dupe-args": 2,
+        "no-dupe-keys": 2,
+        "no-duplicate-case": 2,
+        "no-empty": 0,
+        "no-empty-character-class": 2,
+        "no-ex-assign": 2,
+        "no-extra-boolean-cast": 2,
+        "no-extra-semi": 2,
+        "no-func-assign": 2,
+        "no-inner-declarations": 2,
+        "no-invalid-regexp": 2,
+        "no-irregular-whitespace": 2,
+        "no-misleading-character-class": 2,
+        "no-obj-calls": 2,
+        "no-prototype-builtins": 2,
+        "no-regex-spaces": 2,
+        "no-sparse-arrays": 2,
+        "no-template-curly-in-string": 2,
+        "no-unexpected-multiline": 2,
+        "no-unreachable": 2,
+        "no-unsafe-finally": 2,
+        "no-unsafe-negation": 2,
+        "require-atomic-updates": 2,
+        "use-isnan": 2,
+        "valid-typeof": 2,
+        // Best Practices
+        "accessor-pairs": [
+            2
+        ],
+        "array-callback-return": 2,
+        "block-scoped-var": 1,
+        "consistent-return": 2,
+        "curly": [
+            2,
+            "all"
+        ],
+        "default-case": 2,
+        "dot-notation": 2,
+        "eqeqeq": [
+            2,
+            "smart"
+        ],
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
+        "guard-for-in": 2,
+        "max-classes-per-file": 2,
+        "no-alert": 2,
+        "no-caller": 2,
+        "no-case-declarations": 2,
+        "no-div-regex": 2,
+        "no-else-return": 2,
+        "no-empty-function": 2,
+        "no-empty-pattern": 2,
+        "no-eval": 2,
+        "no-extend-native": 2,
+        "no-extra-bind": 2,
+        "no-extra-label": 2,
+        "no-fallthrough": 2,
+        "no-floating-decimal": 2,
+        "no-global-assign": 2,
+        "no-implicit-globals": 2,
+        "no-implied-eval": 2,
+        "no-invalid-this": 2,
+        "no-iterator": 2,
+        "no-labels": 2,
+        "no-lone-blocks": 2,
+        "no-loop-func": 2,
+        "no-multi-spaces": 2,
+        "no-multi-str": 2,
+        "no-new": 2,
+        "no-new-func": 2,
+        "no-new-wrappers": 2,
+        "no-octal": 2,
+        "no-octal-escape": 2,
+        "no-param-reassign": 2,
+        "no-proto": 2,
+        "no-redeclare": 2,
+        "no-return-assign": [
+            2,
+            "except-parens"
+        ],
+        "no-return-await": 2,
+        "no-script-url": 2,
+        "no-self-assign": 2,
+        "no-self-compare": 2,
+        "no-sequences": 2,
+        "no-throw-literal": 2,
+        "no-unmodified-loop-condition": 2,
+        "no-unused-expressions": [
+            2,
+            {
+                "allowShortCircuit": true
+            }
+        ],
+        "no-useless-call": 2,
+        "no-useless-catch": 2,
+        "no-useless-concat": 2,
+        "no-useless-escape": 2,
+        "no-useless-return": 2,
+        "no-with": 2,
+        "radix": [
+            2,
+            "as-needed"
+        ],
+        "require-await": 2,
+        // Variables
+        "no-delete-var": 2,
+        "no-label-var": 2,
+        "no-shadow": 2,
+        "no-shadow-restricted-names": 2,
+        "no-undef": 2,
+        "no-undef-init": 2,
+        "no-undefined": 2,
+        "no-unused-vars": 0,
+        "no-use-before-define": 2,
+        // Node.js and CommonJS
+        "global-require": 2,
+        "no-buffer-constructor": 2,
+        "no-mixed-requires": 1,
+        "no-new-require": 2,
+        "no-path-concat": 2,
+        "no-sync": 1,
+        // ECMAScript 6
+        "arrow-parens": [
+            2,
+            "as-needed"
+        ],
+        "arrow-spacing": 2,
+        "constructor-super": 2,
+        "generator-star-spacing": 2,
+        "no-class-assign": 2,
+        "no-confusing-arrow": [
+            1,
+            {
+                "allowParens": true
+            }
+        ],
+        "no-const-assign": 2,
+        "no-dupe-class-members": 2,
+        "no-duplicate-imports": 2,
+        "no-new-symbol": 2,
+        "no-this-before-super": 2,
+        "no-useless-computed-key": 2,
+        "no-useless-constructor": 2,
+        "no-useless-rename": 2,
+        "no-var": 2,
+        "object-shorthand": 1,
+        "prefer-arrow-callback": 1,
+        "prefer-const": 1,
+        "prefer-rest-params": 2,
+        "prefer-spread": 2,
+        "prefer-template": 2,
+        "require-yield": 2,
+        "rest-spread-spacing": [
+            2,
+            "never"
+        ],
+        "symbol-description": 2,
+        // React
+        "react/button-has-type": 1,
+        "react/no-access-state-in-setstate": 1,
+        "react/no-array-index-key": 0,
+        "react/no-children-prop": 2,
+        "react/no-danger": 2,
+        "react/no-danger-with-children": 2,
+        "react/no-deprecated": 2,
+        "react/no-direct-mutation-state": 2,
+        "react/no-find-dom-node": 2,
+        "react/no-is-mounted": 2,
+        "react/no-multi-comp": 2,
+        "react/no-redundant-should-component-update": 2,
+        "react/no-render-return-value": 2,
+        "react/no-typos": 2,
+        "react/no-string-refs": 2,
+        "react/no-this-in-sfc": 2,
+        "react/no-unescaped-entities": 2,
+        "react/no-unknown-property": 2,
+        "react/no-will-update-set-state": 2,
+        "react/prefer-es6-class": 2,
+        "react/require-render-return": 2,
+        "react/self-closing-comp": 2,
+        "react/void-dom-elements-no-children": 2,
+        // React:jsx
+        "react/jsx-closing-tag-location": 2,
+        "react/jsx-equals-spacing": 2,
+        "react/jsx-first-prop-new-line": 2,
+        "react/jsx-handler-names": 2,
+        "react/jsx-key": 2,
+        "react/jsx-no-comment-textnodes": 2,
+        "react/jsx-no-duplicate-props": 2,
+        "react/jsx-no-literals": 2,
+        "react/jsx-no-target-blank": 2,
+        "react/jsx-no-undef": 2,
+        "react/jsx-curly-brace-presence": [
+            2,
+            {
+                "props": "always",
+                "children": "ignore"
+            }
+        ],
+        "react/jsx-pascal-case": 2,
+        "react/jsx-props-no-multi-spaces": 2,
+        "react/jsx-uses-vars": 2,
+        "react/jsx-uses-react": "OFF",
+        "react/react-in-jsx-scope": "OFF",
+        "react-hooks/rules-of-hooks": 2,
+        "react-hooks/exhaustive-deps": 1,
+        "prettier/prettier": [
+            "ERROR",
+            {
+                "singleQuote": false,
+                "tabWidth": 4,
+                "trailingComma": "all",
+                "arrowParens": "avoid",
+                "bracketSpacing": false
+            }
+        ]
+    },
+    // TypeScript
+    "overrides": [
+        {
+            "files": [
+                "**/*.{ts,tsx}"
+            ],
+            "rules": {
+        
+                "@typescript-eslint/ban-ts-comment": 0,
+                "@typescript-eslint/explicit-module-boundary-types": [
+                    2,
+                    {"allowArgumentsExplicitlyTypedAsAny": true}
+                ],
+                "@typescript-eslint/no-empty-function": 2,
+                "@typescript-eslint/no-explicit-any": 0,
+                "@typescript-eslint/no-inferrable-types": 0,
+                "@typescript-eslint/no-unused-vars": [2, {"args": "after-used"}],
+                "@typescript-eslint/no-var-requires": 0,
+                "@typescript-eslint/no-duplicate-imports": [2],
+                "@typescript-eslint/typedef": [
+                    2,
+                    {
+                        "arrayDestructuring": false,
+                        "arrowParameter": false,
+                        "memberVariableDeclaration": true,
+                        "objectDestructuring": false,
+                        "parameter": true,
+                        "propertyDeclaration": true,
+                        "variableDeclaration": true,
+                        "variableDeclarationIgnoreFunction": true
+                    }
+                ]
+            }
+        }
+    ]
+}
