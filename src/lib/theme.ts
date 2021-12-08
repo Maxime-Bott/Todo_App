@@ -1,4 +1,5 @@
 import {extendTheme} from "@chakra-ui/react";
+import {mode} from "@chakra-ui/theme-tools";
 
 type configProps = {
     initialColorMode: string;
@@ -11,12 +12,15 @@ const config: configProps = {
 };
 
 const styles: {[key: string]: any} = {
-    body: {
-        fontSize: "18px",
-    },
+    global: (props: any) => ({
+        body: {
+            fontSize: "18px",
+            bgColor: mode("hsl(0, 0%, 98%)", "hsl(235, 21%, 11%)")(props),
+        },
+    }),
 };
 
-const fonts: {[key: string]: any} = {
+const fonts: {[key: string]: string} = {
     heading: "Josefin Sans",
     body: "Josefin Sans",
 };
