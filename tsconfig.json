@@ -21,10 +21,9 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "src",
     "paths": {
-      "components": ["components/*"]
-    }
+      "components": ["components/*"],
+      "@types": ["../@types"]
+    },
+    "typeRoots": ["./node_module/@types","./@types"],
   },
-  "include": [
-    "src"
-  ]
 }
