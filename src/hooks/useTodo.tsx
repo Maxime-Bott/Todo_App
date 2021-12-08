@@ -5,8 +5,8 @@ type TodoObject = {
     isCompleted: boolean;
 };
 
-type UseTodoProps = {
-    todo: TodoObject[];
+export type UseTodoProps = {
+    todo?: TodoObject[];
     addTodo: (inputs: TodoObject) => void;
 };
 
