@@ -5,10 +5,15 @@ type TodoObject = {
     isCompleted: boolean;
 };
 
-export type UseTodoProps = {
-    todo?: TodoObject[];
+export type TodoProps = {
+    todo: TodoObject[];
+};
+
+export type AddTodoProps = {
     addTodo: (inputs: TodoObject) => void;
 };
+
+type UseTodoProps = TodoProps & AddTodoProps;
 
 export const useTodo = (initalValues: TodoObject[]): UseTodoProps => {
     const [todo, setTodo] = useState(initalValues);
