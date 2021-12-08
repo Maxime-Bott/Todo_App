@@ -8,7 +8,7 @@ type TodoObject = {
 
 type UseTodoProps = {
     todo: TodoObject[];
-    addTodo: (inputs: any) => void;
+    addTodo: (inputs: TodoObject) => void;
 };
 
 export const useTodo = (initalValues: TodoObject[]): UseTodoProps => {
