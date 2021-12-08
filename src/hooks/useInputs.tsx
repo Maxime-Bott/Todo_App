@@ -13,9 +13,11 @@ export const useInputs = (initialValues: GenericObject): ReturnValues => {
     return {
         inputs,
         handleChange: e => {
-            e.preventDefault();
             const {name, value} = e.target as HTMLInputElement;
-            setInputs({[name]: value});
+            setInputs({
+                ...inputs,
+                [name]: value,
+            });
         },
         reset: () => setInputs(initialValues),
     };
