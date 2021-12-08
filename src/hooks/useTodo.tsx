@@ -2,7 +2,6 @@ import {useState} from "react";
 
 type TodoObject = {
     todo: string;
-    id: string;
     isCompleted: boolean;
 };
 
