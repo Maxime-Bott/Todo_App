@@ -13,7 +13,19 @@ export const useInputs = (initialValues: GenericObject): ReturnValues => {
     return {
         inputs,
         handleChange: e => {
-            const {name, value} = e.target as HTMLInputElement;
+            const {
+                name,
+                value: targetValue,
+                checked,
+                type,
+            } = e.target as HTMLInputElement;
+
+            let value: boolean | string = targetValue;
+
+            if (type === "checkbox") {
+                value = checked;
+            }
+
             setInputs({
                 ...inputs,
                 [name]: value,
