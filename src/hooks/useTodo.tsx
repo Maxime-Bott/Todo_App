@@ -19,7 +19,9 @@ export const useTodo = (initalValue: TodoArray): UseTodoProps => {
     return {
         todo,
         addTodo: (inputs: TodoObject) => {
-            setTodo([...todo, inputs]);
+            if (inputs.todo.trim()) {
+                setTodo([...todo, inputs]);
+            }
         },
         // eslint-disable-next-line no-shadow
         clearCompletedTodo: (todo: TodoArray) => {
