@@ -1,27 +1,29 @@
 import {useState} from "react";
 
-interface TodoObject {
+export interface TodoObject {
     todo: string;
     isCompleted: boolean;
 }
 
-export interface TodoProps {
-    todo: TodoObject[];
-}
+type TodoArray = TodoObject[];
 
-export interface AddTodoProps {
+export interface UseTodoProps {
+    todo: TodoArray;
     addTodo: (inputs: TodoObject) => void;
+    clearCompletedTodo: (todo: TodoArray) => void;
 }
 
-type UseTodoProps = TodoProps & AddTodoProps;
-
-export const useTodo = (initalValue: TodoObject[]): UseTodoProps => {
+export const useTodo = (initalValue: TodoArray): UseTodoProps => {
     const [todo, setTodo] = useState(initalValue);
 
     return {
         todo,
         addTodo: (inputs: TodoObject) => {
             setTodo([...todo, inputs]);
+        },
+        // eslint-disable-next-line no-shadow
+        clearCompletedTodo: (todo: TodoArray) => {
+            setTodo(todo.filter((t: TodoObject) => !t.isCompleted));
         },
     };
 };
