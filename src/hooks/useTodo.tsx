@@ -15,8 +15,8 @@ export interface AddTodoProps {
 
 type UseTodoProps = TodoProps & AddTodoProps;
 
-export const useTodo = (initalValues: TodoObject[]): UseTodoProps => {
-    const [todo, setTodo] = useState(initalValues);
+export const useTodo = (initalValue: TodoObject[]): UseTodoProps => {
+    const [todo, setTodo] = useState(initalValue);
 
     return {
         todo,
