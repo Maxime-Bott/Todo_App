@@ -1,17 +1,17 @@
 import {useState} from "react";
 
-type TodoObject = {
+interface TodoObject {
     todo: string;
     isCompleted: boolean;
-};
+}
 
-export type TodoProps = {
+export interface TodoProps {
     todo: TodoObject[];
-};
+}
 
-export type AddTodoProps = {
+export interface AddTodoProps {
     addTodo: (inputs: TodoObject) => void;
-};
+}
 
 type UseTodoProps = TodoProps & AddTodoProps;
 
