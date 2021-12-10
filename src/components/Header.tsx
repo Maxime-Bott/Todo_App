@@ -4,7 +4,13 @@ import {Box, Heading} from "@chakra-ui/react";
 
 const Header: FC = (): ReactElement => {
     return (
-        <Box d={"flex"}>
+        <Box
+            as={"header"}
+            d={"flex"}
+            justifyContent={"space-between"}
+            w={"100%"}
+            mt={"4rem"}
+        >
             <Heading as={"h1"} d={"none"}>
                 {"Todo List Application"}
             </Heading>
