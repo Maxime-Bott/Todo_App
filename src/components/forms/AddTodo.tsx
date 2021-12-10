@@ -2,9 +2,11 @@ import {FC, FormEvent, ReactElement} from "react";
 import {Input} from "@chakra-ui/react";
 
 import {useInputs} from "hooks/useInputs";
-import {AddTodoProps} from "hooks/useTodo";
+import {UseTodoProps} from "hooks/useTodo";
 
-const AddTodo: FC<AddTodoProps> = ({addTodo}): ReactElement => {
+const AddTodo: FC<Pick<UseTodoProps, "addTodo">> = ({
+    addTodo,
+}): ReactElement => {
     const {inputs, handleChange, reset} = useInputs({todo: ""});
 
     const handleSubmit = (e: FormEvent) => {

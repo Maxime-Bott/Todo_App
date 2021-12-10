@@ -8,13 +8,13 @@ import Header from "components/Header";
 import TodoList from "components/TodoList";
 
 const Homepage: FC = (): ReactElement => {
-    const {todo, addTodo} = useTodo([]);
+    const {todo, addTodo, clearCompletedTodo} = useTodo([]);
 
     return (
         <Box>
             <Header />
             <AddTodo addTodo={addTodo} />
-            <TodoList todo={todo} />
+            <TodoList todo={todo} clearCompletedTodo={clearCompletedTodo} />
         </Box>
     );
 };
