@@ -18,6 +18,7 @@ const Homepage: FC = (): ReactElement => {
         clearCompletedTodo,
         handleEdit,
         handleFilter,
+        statusOfTodo,
     } = useTodo([]);
     const bgImage: string = useColorModeValue(lightHeroBanner, darkHeroBanner);
 
@@ -39,6 +40,7 @@ const Homepage: FC = (): ReactElement => {
                     clearCompletedTodo={clearCompletedTodo}
                     handleEdit={handleEdit}
                     handleFilter={handleFilter}
+                    statusOfTodo={statusOfTodo}
                 />
             </Box>
         </Box>

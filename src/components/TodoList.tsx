@@ -10,7 +10,20 @@ const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
     clearCompletedTodo,
     handleEdit,
     handleFilter,
+    statusOfTodo,
 }): ReactElement => {
+    const {
+        includesActivatedTodo,
+        includesCompletedTodo,
+        numberOfTodoActivated,
+    } = statusOfTodo();
+
+    console.log(
+        includesActivatedTodo,
+        includesCompletedTodo,
+        numberOfTodoActivated,
+    );
+
     return (
         <Box>
             <List d={"flex"} flexDir={"column"}>
