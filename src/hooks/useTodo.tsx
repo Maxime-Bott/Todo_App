@@ -17,7 +17,7 @@ export interface UseTodoProps {
     statusOfTodo: () => {
         includesActivatedTodo: boolean;
         includesCompletedTodo: boolean;
-        numberOfTodoActivated: number;
+        numberOfActivatedTodo: number;
     };
 }
 
@@ -73,12 +73,12 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
         statusOfTodo: () => {
             let includesActivatedTodo: boolean = false;
             let includesCompletedTodo: boolean = false;
-            let numberOfTodoActivated: number = 0;
+            let numberOfActivatedTodo: number = 0;
 
             for (const td of todoList) {
                 if (!td.isCompleted) {
                     includesActivatedTodo = true;
-                    numberOfTodoActivated += 1;
+                    numberOfActivatedTodo += 1;
                 } else {
                     includesCompletedTodo = true;
                 }
@@ -87,7 +87,7 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
             return {
                 includesActivatedTodo,
                 includesCompletedTodo,
-                numberOfTodoActivated,
+                numberOfActivatedTodo,
             };
         },
     };

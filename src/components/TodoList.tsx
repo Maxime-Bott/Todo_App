@@ -14,13 +14,13 @@ const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
     const {
         includesActivatedTodo,
         includesCompletedTodo,
-        numberOfTodoActivated,
+        numberOfActivatedTodo,
     } = statusOfTodo();
 
     console.log(
         includesActivatedTodo,
         includesCompletedTodo,
-        numberOfTodoActivated,
+        numberOfActivatedTodo,
     );
 
     return (
