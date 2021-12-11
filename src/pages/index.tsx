@@ -11,7 +11,14 @@ import darkHeroBanner from "assets/img/bg-desktop-dark.jpg";
 import lightHeroBanner from "assets/img/bg-desktop-light.jpg";
 
 const Homepage: FC = (): ReactElement => {
-    const {todoList, addTodo, clearCompletedTodo, handleEdit} = useTodo([]);
+    const {
+        todoList,
+        filteredTodoList,
+        addTodo,
+        clearCompletedTodo,
+        handleEdit,
+        handleFilter,
+    } = useTodo([]);
     const bgImage: string = useColorModeValue(lightHeroBanner, darkHeroBanner);
 
     return (
@@ -26,13 +33,13 @@ const Homepage: FC = (): ReactElement => {
             <Box w={"35%"} margin={"auto"} d={"flex"} flexDir={"column"}>
                 <Header />
                 <AddTodo addTodo={addTodo} />
-                {todoList.length > 0 && (
-                    <TodoList
-                        todoList={todoList}
-                        clearCompletedTodo={clearCompletedTodo}
-                        handleEdit={handleEdit}
-                    />
-                )}
+                <TodoList
+                    todoList={todoList}
+                    filteredTodoList={filteredTodoList}
+                    clearCompletedTodo={clearCompletedTodo}
+                    handleEdit={handleEdit}
+                    handleFilter={handleFilter}
+                />
             </Box>
         </Box>
     );
