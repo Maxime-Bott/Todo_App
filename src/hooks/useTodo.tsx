@@ -32,12 +32,14 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
                 setFilteredTodoList([...filteredTodoList, inputs]);
             }
         },
+
         clearCompletedTodo: () => {
             setTodo(todoList.filter((t: TodoObject) => !t.isCompleted));
             setFilteredTodoList(
                 todoList.filter((t: TodoObject) => !t.isCompleted),
             );
         },
+
         handleEdit: (e, index, updatedTodo) => {
             const newTodo: TodoArray = todoList.map((t, i) => {
                 if (index === i) {
@@ -50,6 +52,7 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
             });
             setTodo(newTodo);
         },
+
         handleFilter: filter => {
             switch (filter) {
                 case "ALL":
@@ -74,9 +77,7 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
                 if (!td.isCompleted) {
                     includesActivatedTodo = true;
                     numberOfTodoActivated += 1;
-                }
-
-                if (td.isCompleted) {
+                } else {
                     includesCompletedTodo = true;
                 }
             }
