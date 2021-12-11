@@ -14,6 +14,11 @@ export interface UseTodoProps {
     clearCompletedTodo: (todo: TodoArray) => void;
     handleEdit: (e: FormEvent, index: number, updatedTodo: TodoObject) => void;
     handleFilter: (f: string) => void;
+    statusOfTodo: () => {
+        includesActivatedTodo: boolean;
+        includesCompletedTodo: boolean;
+        numberOfTodoActivated: number;
+    };
 }
 
 export const useTodo = (initialValue: TodoArray): UseTodoProps => {
@@ -62,6 +67,29 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
                 default:
                     throw new Error();
             }
+        },
+        // eslint-disable-next-line no-shadow
+        statusOfTodo: () => {
+            let includesActivatedTodo: boolean = false;
+            let includesCompletedTodo: boolean = false;
+            let numberOfTodoActivated: number = 0;
+
+            for (const td of todoList) {
+                if (!td.isCompleted) {
+                    includesActivatedTodo = true;
+                    numberOfTodoActivated += 1;
+                }
+
+                if (td.isCompleted) {
+                    includesCompletedTodo = true;
+                }
+            }
+
+            return {
+                includesActivatedTodo,
+                includesCompletedTodo,
+                numberOfTodoActivated,
+            };
         },
     };
 };
