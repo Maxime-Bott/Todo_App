@@ -26,21 +26,23 @@ const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
     return (
         <Box>
             <List d={"flex"} flexDir={"column"}>
-                {filteredTodoList.map((t: TodoObject, i: number) => {
+                {filteredTodoList.map((todo: TodoObject, i: number) => {
                     return (
                         <Box key={`todo-item-${i}`}>
                             <ListItem d={"flex"}>
                                 <Checkbox
                                     name={"isCompleted"}
-                                    value={t.isCompleted}
-                                    onChange={e => handleEdit(e, i, t)}
+                                    value={todo.isCompleted}
+                                    onChange={e => handleEdit(e, todo)}
                                 />
                                 <Text
                                     textDecor={
-                                        t.isCompleted ? "line-through" : "none"
+                                        todo.isCompleted
+                                            ? "line-through"
+                                            : "none"
                                     }
                                 >
-                                    {t.todo}
+                                    {todo.todo}
                                 </Text>
                             </ListItem>
                         </Box>

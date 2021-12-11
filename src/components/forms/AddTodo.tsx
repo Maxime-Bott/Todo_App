@@ -12,11 +12,16 @@ const AddTodo: FC<Pick<UseTodoProps, "addTodo">> = ({
     const {inputs, handleChange, reset} = useInputs({
         todo: "",
         isCompleted: false,
+        id: "",
     });
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        addTodo({todo: inputs.todo, isCompleted: inputs.isCompleted});
+        addTodo({
+            todo: inputs.todo,
+            isCompleted: inputs.isCompleted,
+            id: `id-${Date.now()}`,
+        });
         reset();
     };
 

@@ -3,6 +3,7 @@ import {useState, FormEvent} from "react";
 export interface TodoObject {
     todo: string;
     isCompleted: boolean;
+    id: string;
 }
 
 type TodoArray = TodoObject[];
@@ -11,7 +12,7 @@ export interface UseTodoProps {
     filteredTodoList: TodoArray;
     addTodo: (inputs: TodoObject) => void;
     clearCompletedTodo: () => void;
-    handleEdit: (e: FormEvent, index: number, updatedTodo: TodoObject) => void;
+    handleEdit: (e: FormEvent, updatedTodo: TodoObject) => void;
     handleFilter: (f: string) => void;
     statusOfTodo: () => {
         includesActivatedTodo: boolean;
@@ -40,9 +41,9 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
             );
         },
 
-        handleEdit: (e, index, updatedTodo) => {
-            const newTodo: TodoArray = todoList.map((t, i) => {
-                if (index === i) {
+        handleEdit: (e, updatedTodo) => {
+            const newTodo: TodoArray = todoList.map(t => {
+                if (t.id === updatedTodo.id) {
                     const {checked} = e.target as HTMLInputElement;
                     updatedTodo.isCompleted = checked;
 
@@ -68,6 +69,7 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
                     throw new Error();
             }
         },
+
         statusOfTodo: () => {
             let includesActivatedTodo: boolean = false;
             let includesCompletedTodo: boolean = false;

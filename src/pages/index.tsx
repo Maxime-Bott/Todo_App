@@ -19,6 +19,7 @@ const Homepage: FC = (): ReactElement => {
         handleFilter,
         statusOfTodo,
     } = useTodo([]);
+
     const bgImage: string = useColorModeValue(lightHeroBanner, darkHeroBanner);
 
     return (
