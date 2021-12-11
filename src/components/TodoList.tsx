@@ -5,7 +5,6 @@ import Checkbox from "components/forms/Checkbox";
 import {UseTodoProps, TodoObject} from "hooks/useTodo";
 
 const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
-    todoList,
     filteredTodoList,
     clearCompletedTodo,
     handleEdit,
@@ -49,10 +48,7 @@ const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
                 })}
             </List>
             <Box>
-                <Button
-                    type={"button"}
-                    onClick={() => clearCompletedTodo(todoList)}
-                >
+                <Button type={"button"} onClick={() => clearCompletedTodo()}>
                     {"Clear"}
                 </Button>
                 <Button type={"button"} onClick={() => handleFilter("ALL")}>

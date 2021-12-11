@@ -12,7 +12,6 @@ import lightHeroBanner from "assets/img/bg-desktop-light.jpg";
 
 const Homepage: FC = (): ReactElement => {
     const {
-        todoList,
         filteredTodoList,
         addTodo,
         clearCompletedTodo,
@@ -35,7 +34,6 @@ const Homepage: FC = (): ReactElement => {
                 <Header />
                 <AddTodo addTodo={addTodo} />
                 <TodoList
-                    todoList={todoList}
                     filteredTodoList={filteredTodoList}
                     clearCompletedTodo={clearCompletedTodo}
                     handleEdit={handleEdit}

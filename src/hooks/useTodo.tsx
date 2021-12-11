@@ -8,10 +8,9 @@ export interface TodoObject {
 type TodoArray = TodoObject[];
 
 export interface UseTodoProps {
-    todoList: TodoArray;
     filteredTodoList: TodoArray;
     addTodo: (inputs: TodoObject) => void;
-    clearCompletedTodo: (todo: TodoArray) => void;
+    clearCompletedTodo: () => void;
     handleEdit: (e: FormEvent, index: number, updatedTodo: TodoObject) => void;
     handleFilter: (f: string) => void;
     statusOfTodo: () => {
@@ -26,7 +25,6 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
     const [filteredTodoList, setFilteredTodoList] = useState(todoList);
 
     return {
-        todoList,
         filteredTodoList,
         addTodo: inputs => {
             if (inputs.todo.trim()) {
@@ -35,7 +33,7 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
             }
         },
         // eslint-disable-next-line no-shadow
-        clearCompletedTodo: todoList => {
+        clearCompletedTodo: () => {
             setTodo(todoList.filter((t: TodoObject) => !t.isCompleted));
             setFilteredTodoList(
                 todoList.filter((t: TodoObject) => !t.isCompleted),
