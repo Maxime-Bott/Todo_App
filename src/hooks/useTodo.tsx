@@ -32,7 +32,6 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
                 setFilteredTodoList([...filteredTodoList, inputs]);
             }
         },
-        // eslint-disable-next-line no-shadow
         clearCompletedTodo: () => {
             setTodo(todoList.filter((t: TodoObject) => !t.isCompleted));
             setFilteredTodoList(
