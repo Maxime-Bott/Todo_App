@@ -1,8 +1,8 @@
 import {FC, ReactElement} from "react";
-import {List, Box} from "@chakra-ui/react";
+import {List, Box, ListItem, Text} from "@chakra-ui/react";
 
+import Checkbox from "components/forms/Checkbox";
 import {UseTodoProps, TodoObject} from "hooks/useTodo";
-import TodoWithCheckbox from "components/TodoWithCheckbox";
 
 const TodoList: FC<Pick<UseTodoProps, "clearCompletedTodo" | "todo">> = ({
     todo,
@@ -12,13 +12,16 @@ const TodoList: FC<Pick<UseTodoProps, "clearCompletedTodo" | "todo">> = ({
         <Box>
             <List d={"flex"} flexDir={"column"}>
                 {todo.map((t: TodoObject, i: number) => (
-                    <TodoWithCheckbox
-                        key={`todo-${i}`}
-                        todoText={t.todo}
-                        onChange={() => console.log("TODO: OnChange")}
-                        checkName={"isCompleted"}
-                        checkValue={t.isCompleted}
-                    />
+                    <Box key={`todo-item-${i}`}>
+                        <ListItem d={"flex"}>
+                            <Checkbox
+                                name={"isCompleted"}
+                                value={t.isCompleted}
+                                onChange={() => console.log("")}
+                            />
+                            <Text>{t.todo}</Text>
+                        </ListItem>
+                    </Box>
                 ))}
             </List>
             <button type={"button"} onClick={() => clearCompletedTodo(todo)}>

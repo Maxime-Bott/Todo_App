@@ -1,7 +1,7 @@
 import {FC, FormEvent, ReactElement} from "react";
-import {Box} from "@chakra-ui/react";
+import {Box, Input} from "@chakra-ui/react";
 
-import InputWithCheckbox from "components/TodoWithCheckbox";
+import Checkbox from "components/forms/Checkbox";
 
 import {useInputs} from "hooks/useInputs";
 import {UseTodoProps} from "hooks/useTodo";
@@ -23,16 +23,21 @@ const AddTodo: FC<Pick<UseTodoProps, "addTodo">> = ({
     return (
         <Box w={"100%"}>
             <form onSubmit={handleSubmit}>
-                <InputWithCheckbox
-                    type={"text"}
-                    onChange={handleChange}
-                    name={"todo"}
-                    value={inputs.todo}
-                    placeholder={"Create a new todo..."}
-                    checkName={"isCompleted"}
-                    checkValue={inputs.isCompleted}
-                    withInput={true}
-                />
+                <Box d={"flex"}>
+                    <Checkbox
+                        name={"isCompleted"}
+                        value={inputs.isCompleted}
+                        onChange={handleChange}
+                    />
+                    <Input
+                        border={"none"}
+                        type={"text"}
+                        onChange={handleChange}
+                        name={"todo"}
+                        value={inputs.todo}
+                        placeholder={"Create a new todo ..."}
+                    />
+                </Box>
             </form>
         </Box>
     );
