@@ -66,7 +66,6 @@ export const useTodo = (initialValue: TodoArray): UseTodoProps => {
                     throw new Error();
             }
         },
-        // eslint-disable-next-line no-shadow
         statusOfTodo: () => {
             let includesActivatedTodo: boolean = false;
             let includesCompletedTodo: boolean = false;
