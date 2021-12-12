@@ -1,5 +1,6 @@
 import {extendTheme} from "@chakra-ui/react";
 import {mode} from "@chakra-ui/theme-tools";
+import {GenericObject} from "@types";
 
 type configProps = {
     initialColorMode: string;
@@ -32,11 +33,22 @@ const colors: {[key: string]: string} = {
     hoverBlue: "hsl(236, 33%, 92%)",
 };
 
+const components: GenericObject = {
+    Checkbox: {
+        baseStyle: {
+            control: {
+                borderRadius: "50%",
+            },
+        },
+    },
+};
+
 const theme: any = extendTheme({
     config,
     colors,
     styles,
     fonts,
+    components,
 });
 
 export default theme;
