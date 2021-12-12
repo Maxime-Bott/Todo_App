@@ -11,7 +11,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     filteredTodoList,
     clearCompletedTodo,
     handleEdit,
-    handleFilter,
+    setFilter,
     statusOfTodo,
 }): ReactElement => {
     let $content: Nullable<ReactElement> = (
@@ -20,7 +20,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
 
     if (filteredTodoList.length > 0) {
         $content = (
-            <List d={"flex"} flexDir={"column"}>
+            <List d={"flex"} flexDir={"column"} bg={"desaturetBlue"}>
                 {filteredTodoList.map((todo: TodoObject, i: number) => {
                     return (
                         <Box key={`todo-item-${i}`}>
@@ -52,7 +52,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
             {$content}
             <FooterTodoList
                 clearCompletedTodo={clearCompletedTodo}
-                handleFilter={handleFilter}
+                setFilter={setFilter}
                 statusOfTodo={statusOfTodo}
             />
         </Box>

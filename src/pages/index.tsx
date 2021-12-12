@@ -16,7 +16,7 @@ const Homepage: FC = (): ReactElement => {
         addTodo,
         clearCompletedTodo,
         handleEdit,
-        handleFilter,
+        setFilter,
         statusOfTodo,
     } = useTodo([]);
 
@@ -38,7 +38,7 @@ const Homepage: FC = (): ReactElement => {
                     filteredTodoList={filteredTodoList}
                     clearCompletedTodo={clearCompletedTodo}
                     handleEdit={handleEdit}
-                    handleFilter={handleFilter}
+                    setFilter={setFilter}
                     statusOfTodo={statusOfTodo}
                 />
             </Box>

@@ -5,9 +5,9 @@ import {UseTodoReturnProps} from "hooks/useTodo";
 const FooterTodoList: FC<
     Pick<
         UseTodoReturnProps,
-        "handleFilter" | "clearCompletedTodo" | "statusOfTodo"
+        "setFilter" | "clearCompletedTodo" | "statusOfTodo"
     >
-> = ({handleFilter, clearCompletedTodo, statusOfTodo}): ReactElement => {
+> = ({setFilter, clearCompletedTodo, statusOfTodo}): ReactElement => {
     const {
         includesActivatedTodo,
         includesCompletedTodo,
@@ -16,28 +16,28 @@ const FooterTodoList: FC<
     } = statusOfTodo();
 
     return (
-        <Box d={"flex"}>
+        <Box d={"flex"} bg={"desaturetBlue"}>
             {numberOfActivatedTodo > 0 && (
                 <Text>{`${numberOfActivatedTodo} items left`}</Text>
             )}
             <Button
                 type={"button"}
                 disabled={TodoLength === 0 ? true : false}
-                onClick={() => handleFilter("ALL")}
+                onClick={() => setFilter("ALL")}
             >
                 {"All"}
             </Button>
             <Button
                 type={"button"}
                 disabled={includesActivatedTodo ? false : true}
-                onClick={() => handleFilter("ACTIVE")}
+                onClick={() => setFilter("ACTIVE")}
             >
                 {"Active"}
             </Button>
             <Button
                 type={"button"}
                 disabled={includesCompletedTodo ? false : true}
-                onClick={() => handleFilter("COMPLETED")}
+                onClick={() => setFilter("COMPLETED")}
             >
                 {"Completed"}
             </Button>
