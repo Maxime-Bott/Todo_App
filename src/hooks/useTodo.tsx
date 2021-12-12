@@ -1,4 +1,4 @@
-import {useState, FormEvent} from "react";
+import {useState, FormEvent, useCallback, useEffect} from "react";
 
 export interface TodoObject {
     todo: string;
@@ -13,7 +13,7 @@ export interface UseTodoReturnProps {
     addTodo: (inputs: TodoObject) => void;
     clearCompletedTodo: () => void;
     handleEdit: (e: FormEvent, updatedTodo: TodoObject) => void;
-    handleFilter: (f: string) => void;
+    setFilter: (f: string) => void;
     statusOfTodo: () => {
         includesActivatedTodo: boolean;
         includesCompletedTodo: boolean;
@@ -25,21 +25,39 @@ export interface UseTodoReturnProps {
 export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
     const [todoList, setTodo] = useState(initialValue);
     const [filteredTodoList, setFilteredTodoList] = useState(todoList);
+    const [filter, setFilter] = useState("ALL");
+
+    const handleFilter: () => void = useCallback(() => {
+        switch (filter) {
+            case "ALL":
+                setFilteredTodoList(todoList);
+                break;
+            case "COMPLETED":
+                setFilteredTodoList(todoList.filter(t => t.isCompleted));
+                break;
+            case "ACTIVE":
+                setFilteredTodoList(todoList.filter(t => !t.isCompleted));
+                break;
+            default:
+                throw new Error();
+        }
+    }, [todoList, filter]);
+
+    useEffect(() => {
+        handleFilter();
+    }, [handleFilter]);
 
     return {
+        setFilter,
         filteredTodoList,
         addTodo: inputs => {
             if (inputs.todo.trim()) {
                 setTodo([...todoList, inputs]);
-                setFilteredTodoList([...filteredTodoList, inputs]);
             }
         },
 
         clearCompletedTodo: () => {
             setTodo(todoList.filter((t: TodoObject) => !t.isCompleted));
-            setFilteredTodoList(
-                todoList.filter((t: TodoObject) => !t.isCompleted),
-            );
         },
 
         handleEdit: (e, updatedTodo) => {
@@ -55,22 +73,6 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
             setTodo(newTodo);
         },
 
-        handleFilter: filter => {
-            switch (filter) {
-                case "ALL":
-                    setFilteredTodoList(todoList);
-                    break;
-                case "COMPLETED":
-                    setFilteredTodoList(todoList.filter(t => t.isCompleted));
-                    break;
-                case "ACTIVE":
-                    setFilteredTodoList(todoList.filter(t => !t.isCompleted));
-                    break;
-                default:
-                    throw new Error();
-            }
-        },
-
         statusOfTodo: () => {
             let includesActivatedTodo: boolean = false;
             let includesCompletedTodo: boolean = false;
@@ -84,7 +86,6 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
                     includesCompletedTodo = true;
                 }
             }
-
             return {
                 includesActivatedTodo,
                 includesCompletedTodo,
