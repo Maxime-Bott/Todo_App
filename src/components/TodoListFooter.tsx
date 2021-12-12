@@ -1,9 +1,12 @@
 import {FC, ReactElement} from "react";
 import {Box, Button, Text} from "@chakra-ui/react";
-import {UseTodoProps} from "hooks/useTodo";
+import {UseTodoReturnProps} from "hooks/useTodo";
 
 const FooterTodoList: FC<
-    Pick<UseTodoProps, "handleFilter" | "clearCompletedTodo" | "statusOfTodo">
+    Pick<
+        UseTodoReturnProps,
+        "handleFilter" | "clearCompletedTodo" | "statusOfTodo"
+    >
 > = ({handleFilter, clearCompletedTodo, statusOfTodo}): ReactElement => {
     const {
         includesActivatedTodo,

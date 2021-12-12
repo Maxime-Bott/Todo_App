@@ -2,12 +2,12 @@ import {Nullable} from "@types";
 import {FC, ReactElement} from "react";
 import {List, Box, ListItem, Text} from "@chakra-ui/react";
 
-import {UseTodoProps, TodoObject} from "hooks/useTodo";
+import {UseTodoReturnProps, TodoObject} from "hooks/useTodo";
 
 import Checkbox from "components/forms/Checkbox";
 import FooterTodoList from "components/TodoListFooter";
 
-const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
+const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     filteredTodoList,
     clearCompletedTodo,
     handleEdit,

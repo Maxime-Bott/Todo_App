@@ -8,7 +8,7 @@ export interface TodoObject {
 
 type TodoArray = TodoObject[];
 
-export interface UseTodoProps {
+export interface UseTodoReturnProps {
     filteredTodoList: TodoArray;
     addTodo: (inputs: TodoObject) => void;
     clearCompletedTodo: () => void;
@@ -22,7 +22,7 @@ export interface UseTodoProps {
     };
 }
 
-export const useTodo = (initialValue: TodoArray): UseTodoProps => {
+export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
     const [todoList, setTodo] = useState(initialValue);
     const [filteredTodoList, setFilteredTodoList] = useState(todoList);
 
