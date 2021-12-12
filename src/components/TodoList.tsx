@@ -1,8 +1,11 @@
+import {Nullable} from "@types";
 import {FC, ReactElement} from "react";
-import {List, Box, ListItem, Text, Button} from "@chakra-ui/react";
+import {List, Box, ListItem, Text} from "@chakra-ui/react";
+
+import {UseTodoProps, TodoObject} from "hooks/useTodo";
 
 import Checkbox from "components/forms/Checkbox";
-import {UseTodoProps, TodoObject} from "hooks/useTodo";
+import FooterTodoList from "components/TodoListFooter";
 
 const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
     filteredTodoList,
@@ -11,20 +14,12 @@ const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
     handleFilter,
     statusOfTodo,
 }): ReactElement => {
-    const {
-        includesActivatedTodo,
-        includesCompletedTodo,
-        numberOfActivatedTodo,
-    } = statusOfTodo();
-
-    console.log(
-        includesActivatedTodo,
-        includesCompletedTodo,
-        numberOfActivatedTodo,
+    let $content: Nullable<ReactElement> = (
+        <Text>{"Your todo list is empty."}</Text>
     );
 
-    return (
-        <Box>
+    if (filteredTodoList.length > 0) {
+        $content = (
             <List d={"flex"} flexDir={"column"}>
                 {filteredTodoList.map((todo: TodoObject, i: number) => {
                     return (
@@ -49,23 +44,17 @@ const TodoList: FC<Omit<UseTodoProps, "addTodo">> = ({
                     );
                 })}
             </List>
-            <Box>
-                <Button type={"button"} onClick={() => clearCompletedTodo()}>
-                    {"Clear"}
-                </Button>
-                <Button type={"button"} onClick={() => handleFilter("ALL")}>
-                    {"All"}
-                </Button>
-                <Button type={"button"} onClick={() => handleFilter("ACTIVE")}>
-                    {"Active"}
-                </Button>
-                <Button
-                    type={"button"}
-                    onClick={() => handleFilter("COMPLETED")}
-                >
-                    {"Completed"}
-                </Button>
-            </Box>
+        );
+    }
+
+    return (
+        <Box>
+            {$content}
+            <FooterTodoList
+                clearCompletedTodo={clearCompletedTodo}
+                handleFilter={handleFilter}
+                statusOfTodo={statusOfTodo}
+            />
         </Box>
     );
 };
