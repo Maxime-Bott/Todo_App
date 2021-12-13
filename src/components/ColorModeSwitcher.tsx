@@ -21,11 +21,14 @@ export const ColorModeSwitcher: FC<ColorModeSwitcherProps> = props => {
             size={"md"}
             fontSize={"lg"}
             variant={"ghost"}
-            color={"current"}
+            color={"#fff"}
             marginLeft={"2"}
             onClick={toggleColorMode}
             icon={<SwitchIcon />}
             aria-label={`Switch to ${text} mode`}
+            _active={{bg: "none"}}
+            _hover={{bg: "none", color: "#feca57"}}
+            _focus={{boxShadow: "none"}}
             {...props}
         />
     );
