@@ -18,6 +18,49 @@ const FooterTodoList: FC<
         TodoLength,
     } = statusOfTodo();
 
+    const filterButtonsProps: {[key: string]: any}[] = [
+        {
+            text: "All",
+            filter: "ALL",
+            disabledCompare: TodoLength,
+        },
+        {
+            text: "Active",
+            filter: "ACTIVE",
+            disabledCompare: includesActivatedTodo,
+        },
+        {
+            text: "Completed",
+            filter: "COMPLETED",
+            disabledCompare: includesCompletedTodo,
+        },
+    ];
+
+    const $filterButtons: ReactElement = (
+        <Box
+            d={"flex"}
+            w={"40%"}
+            px={"0.5rem"}
+            justifyContent={"space-between"}
+        >
+            {filterButtonsProps.map((btn, i) => (
+                <Button
+                    key={`btn-${i}`}
+                    type={"button"}
+                    color={
+                        filter === btn.filter
+                            ? "brightBlue"
+                            : "placeholderColor"
+                    }
+                    disabled={btn.disabledCompare ? false : true}
+                    handleClick={() => setFilter(btn.filter)}
+                >
+                    {btn.text}
+                </Button>
+            ))}
+        </Box>
+    );
+
     return (
         <Box
             d={"flex"}
@@ -26,48 +69,13 @@ const FooterTodoList: FC<
             justifyContent={"space-between"}
             px={"1rem"}
         >
-            {numberOfActivatedTodo > 0 && (
-                <Text color={"placeholderColor"} fontSize={"0.7rem"} w={"20%"}>
-                    {`${numberOfActivatedTodo} items left`}
-                </Text>
-            )}
-            <Box
-                d={"flex"}
-                w={"40%"}
-                px={"0.5rem"}
-                justifyContent={"space-between"}
-            >
-                <Button
-                    type={"button"}
-                    color={filter === "ALL" ? "brightBlue" : "placeholderColor"}
-                    disabled={TodoLength === 0 ? true : false}
-                    handleClick={() => setFilter("ALL")}
-                >
-                    {"All"}
-                </Button>
-                <Button
-                    type={"button"}
-                    color={
-                        filter === "ACTIVE" ? "brightBlue" : "placeholderColor"
-                    }
-                    disabled={includesActivatedTodo ? false : true}
-                    handleClick={() => setFilter("ACTIVE")}
-                >
-                    {"Active"}
-                </Button>
-                <Button
-                    type={"button"}
-                    color={
-                        filter === "COMPLETED"
-                            ? "brightBlue"
-                            : "placeholderColor"
-                    }
-                    disabled={includesCompletedTodo ? false : true}
-                    handleClick={() => setFilter("COMPLETED")}
-                >
-                    {"Completed"}
-                </Button>
-            </Box>
+            <Text color={"placeholderColor"} fontSize={"0.7rem"} w={"20%"}>
+                {`${numberOfActivatedTodo} ${
+                    !numberOfActivatedTodo ? "item" : "items"
+                } left`}
+            </Text>
+
+            {$filterButtons}
             <Button
                 w={"20%"}
                 type={"button"}
