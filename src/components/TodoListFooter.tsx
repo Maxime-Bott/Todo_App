@@ -43,21 +43,28 @@ const FooterTodoList: FC<
             px={"0.5rem"}
             justifyContent={"space-between"}
         >
-            {filterButtonsProps.map((btn, i) => (
-                <Button
-                    key={`btn-${i}`}
-                    type={"button"}
-                    color={
-                        filter === btn.filter
-                            ? "brightBlue"
-                            : "placeholderColor"
-                    }
-                    disabled={btn.disabledComparator ? false : true}
-                    handleClick={() => setFilter(btn.filter)}
-                >
-                    {btn.text}
-                </Button>
-            ))}
+            {filterButtonsProps.map((btn, i) => {
+                const isDisabled: boolean = btn.disabledComparator
+                    ? false
+                    : true;
+
+                const isActive: boolean = filter === btn.filter;
+                return (
+                    <Button
+                        key={`btn-${i}`}
+                        type={"button"}
+                        color={isActive ? "brightBlue" : "placeholderColor"}
+                        disabled={isDisabled}
+                        handleClick={() => setFilter(btn.filter)}
+                        _hover={{
+                            bgColor: "none",
+                            color: isDisabled || isActive ? "none" : "#fff",
+                        }}
+                    >
+                        {btn.text}
+                    </Button>
+                );
+            })}
         </Box>
     );
 
