@@ -1,0 +1,17 @@
+body {
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+  
+::-webkit-scrollbar-track {
+    background: hsl(235, 24%, 19%);
+    padding: 1px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: hsl(220, 98%, 61%);
+    border-radius: 4px;
+}

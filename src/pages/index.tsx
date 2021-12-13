@@ -25,15 +25,23 @@ const Homepage: FC = (): ReactElement => {
     const bgImage: string = useColorModeValue(lightHeroBanner, darkHeroBanner);
 
     return (
-        <Box
-            bgImage={bgImage}
-            bgSize={"contain"}
-            bgPosition={"top"}
-            backgroundRepeat={"no-repeat"}
-            w={"100vw"}
-            h={"100vh"}
-        >
-            <Box w={"35%"} margin={"auto"} d={"flex"} flexDir={"column"}>
+        <Box minH={"100vh"}>
+            <Box
+                w={"100%"}
+                h={"35vh"}
+                bgImage={bgImage}
+                bgSize={"cover"}
+                bgPosition={"top"}
+                backgroundRepeat={"no-repeat"}
+                position={"absolute"}
+                zIndex={"-1"}
+            />
+            <Box
+                w={{base: "90vw", md: "70vw", lg: "45vw"}}
+                margin={"auto"}
+                d={"flex"}
+                flexDir={"column"}
+            >
                 <Header />
                 <AddTodo addTodo={addTodo} />
                 <TodoList

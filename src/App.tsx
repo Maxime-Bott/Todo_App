@@ -1,4 +1,5 @@
 import "@fontsource/josefin-sans";
+import "lib/scrollbar.css";
 
 import {ReactElement} from "react";
 import {ChakraProvider} from "@chakra-ui/react";

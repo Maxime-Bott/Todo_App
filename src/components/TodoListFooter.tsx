@@ -39,8 +39,8 @@ const FooterTodoList: FC<
     const $filterButtons: ReactElement = (
         <Box
             d={"flex"}
-            w={"40%"}
-            px={"0.5rem"}
+            w={{base: "60%", sm: "40%"}}
+            px={{base: "0.2rem", sm: "0.5rem"}}
             justifyContent={"space-between"}
         >
             {filterButtonsProps.map((btn, i) => {
@@ -76,7 +76,11 @@ const FooterTodoList: FC<
             justifyContent={"space-between"}
             px={"1rem"}
         >
-            <Text color={"placeholderColor"} fontSize={"0.7rem"} w={"20%"}>
+            <Text
+                display={{base: "none", sm: "block"}}
+                color={"placeholderColor"}
+                fontSize={"0.7rem"}
+            >
                 {`${numberOfActivatedTodo} ${
                     !numberOfActivatedTodo ? "item" : "items"
                 } left`}
@@ -84,7 +88,6 @@ const FooterTodoList: FC<
 
             {$filterButtons}
             <Button
-                w={"20%"}
                 type={"button"}
                 disabled={!includesCompletedTodo ? true : false}
                 onClick={() => clearCompletedTodo()}

@@ -16,12 +16,22 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     statusOfTodo,
 }): ReactElement => {
     let $content: Nullable<ReactElement> = (
-        <Text>{"Your todo list is empty."}</Text>
+        <Box
+            minH={"3.4rem"}
+            d={"flex"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            borderBottom={"1px solid"}
+            borderColor={"borderGreyish"}
+            color={"#fff"}
+        >
+            <Text>{"Your todo list is empty."}</Text>
+        </Box>
     );
 
     if (filteredTodoList.length > 0) {
         $content = (
-            <List d={"flex"} flexDir={"column"} bg={"desaturetBlue"}>
+            <List d={"flex"} flexDir={"column"}>
                 {filteredTodoList.map((todo: TodoObject, i: number) => {
                     return (
                         <Box
@@ -65,7 +75,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     }
 
     return (
-        <Box mt={"1rem"}>
+        <Box my={"1.5rem"} bg={"desaturetBlue"} boxShadow={"xl"}>
             {$content}
             <TodoListFooter
                 clearCompletedTodo={clearCompletedTodo}
