@@ -60,6 +60,7 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
 
         clearCompletedTodo: () => {
             setTodo(todoList.filter((t: TodoObject) => !t.isCompleted));
+            setFilter("ALL");
         },
 
         handleEdit: (e, updatedTodo) => {
