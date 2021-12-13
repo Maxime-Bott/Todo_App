@@ -1,5 +1,5 @@
 import {FC, ReactElement} from "react";
-import {Box, useColorModeValue} from "@chakra-ui/react";
+import {Box, useColorModeValue, Center, Text} from "@chakra-ui/react";
 
 import {useTodo} from "hooks/useTodo";
 
@@ -53,6 +53,11 @@ const Homepage: FC = (): ReactElement => {
                     statusOfTodo={statusOfTodo}
                 />
             </Box>
+            <Center>
+                <Text mt={"1.5rem"} color={"hsl(236, 9%, 61%)"}>
+                    {"Drag and drop to reorder list"}
+                </Text>
+            </Center>
         </Box>
     );
 };
