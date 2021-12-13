@@ -26,7 +26,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
                     return (
                         <Box
                             key={`todo-item-${i}`}
-                            h={"3.4rem"}
+                            minH={"3.4rem"}
                             d={"flex"}
                             alignItems={"center"}
                             borderBottom={"1px solid"}
@@ -38,21 +38,24 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
                                     value={todo.isCompleted}
                                     onChange={e => handleEdit(e, todo)}
                                 />
-                                <Text
-                                    px={4}
-                                    textDecor={
-                                        todo.isCompleted
-                                            ? "line-through"
-                                            : "none"
-                                    }
-                                    color={
-                                        todo.isCompleted
-                                            ? "placeholderColor"
-                                            : "#fff"
-                                    }
-                                >
-                                    {todo.todo}
-                                </Text>
+                                <Box display={"flex"} flexWrap={"wrap"}>
+                                    <Text
+                                        wordBreak={"break-all"}
+                                        px={4}
+                                        textDecor={
+                                            todo.isCompleted
+                                                ? "line-through"
+                                                : "none"
+                                        }
+                                        color={
+                                            todo.isCompleted
+                                                ? "placeholderColor"
+                                                : "#fff"
+                                        }
+                                    >
+                                        {todo.todo}
+                                    </Text>
+                                </Box>
                             </ListItem>
                         </Box>
                     );
