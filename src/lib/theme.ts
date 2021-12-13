@@ -14,14 +14,25 @@ const config: configProps = {
 
 const styles: {[key: string]: any} = {
     global: (props: any) => ({
+        ":root": {
+            "--bg-todo": mode("#fff", "#25273c")(props),
+            "--text-todo": mode("#4a485d", "#fafafa")(props),
+            "--completed-todo": mode("#d6d5da", "#4d5066")(props),
+            "--add-todo": mode("#777a92", "#4d5066")(props),
+            "--border-color": mode("#d6d5da", "#393a4c")(props),
+            "--hover-footer": mode("#4a485d", "#fff")(props),
+        },
         body: {
             fontSize: "16px",
-            bgColor: mode("hsl(0, 0%, 98%)", "hsl(235, 21%, 11%)")(props),
+            bgColor: mode("#fafafa", "hsl(235, 21%, 11%)")(props),
         },
         button: {
             _disabled: {
                 _hover: "none",
             },
+        },
+        h2: {
+            color: mode("hsl(0, 0%, 98%)", "#fafafa")(props),
         },
     }),
 };
@@ -37,12 +48,11 @@ const colors: {[key: string]: string} = {
     brightBlue: "hsl(220, 98%, 61%)",
     bgGradient: "linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%)",
     desaturetBlue: "hsl(235, 24%, 19%)",
-    hoverBlue: "hsl(236, 33%, 92%)",
 };
 
 const components: GenericObject = {
     Checkbox: {
-        baseStyle: {
+        baseStyle: (props: any) => ({
             control: {
                 _checked: {
                     border: "none",
@@ -57,8 +67,10 @@ const components: GenericObject = {
                 },
                 borderRadius: "50%",
                 _hover: {
-                    background:
+                    background: mode(
+                        "linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box",
                         "linear-gradient(hsl(235, 24%, 19%), hsl(235, 24%, 19%)) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box",
+                    )(props),
                     border: " 2px solid transparent",
                 },
                 _focus: {
@@ -68,7 +80,7 @@ const components: GenericObject = {
             icon: {
                 color: "#fff",
             },
-        },
+        }),
     },
     Input: {
         baseStyle: {
@@ -77,7 +89,7 @@ const components: GenericObject = {
                     boxShadox: "none",
                 },
                 _placeholder: {
-                    color: "placeholderColor",
+                    color: "var(--add-todo)",
                 },
                 "caret-color": "hsl(220, 98%, 61%)",
             },
