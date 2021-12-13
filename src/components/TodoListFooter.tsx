@@ -22,17 +22,17 @@ const FooterTodoList: FC<
         {
             text: "All",
             filter: "ALL",
-            disabledCompare: TodoLength,
+            disabledComparator: TodoLength,
         },
         {
             text: "Active",
             filter: "ACTIVE",
-            disabledCompare: includesActivatedTodo,
+            disabledComparator: includesActivatedTodo,
         },
         {
             text: "Completed",
             filter: "COMPLETED",
-            disabledCompare: includesCompletedTodo,
+            disabledComparator: includesCompletedTodo,
         },
     ];
 
@@ -52,7 +52,7 @@ const FooterTodoList: FC<
                             ? "brightBlue"
                             : "placeholderColor"
                     }
-                    disabled={btn.disabledCompare ? false : true}
+                    disabled={btn.disabledComparator ? false : true}
                     handleClick={() => setFilter(btn.filter)}
                 >
                     {btn.text}
