@@ -7,18 +7,20 @@ import AddTodo from "components/forms/AddTodo";
 import Header from "components/Header";
 import TodoList from "components/TodoList";
 
+import {fakeTodo} from "data/fakeTodo";
 import darkHeroBanner from "assets/img/bg-desktop-dark.jpg";
 import lightHeroBanner from "assets/img/bg-desktop-light.jpg";
 
 const Homepage: FC = (): ReactElement => {
     const {
         filteredTodoList,
+        filter,
         addTodo,
         clearCompletedTodo,
         handleEdit,
         setFilter,
         statusOfTodo,
-    } = useTodo([]);
+    } = useTodo(fakeTodo);
 
     const bgImage: string = useColorModeValue(lightHeroBanner, darkHeroBanner);
 
@@ -35,6 +37,7 @@ const Homepage: FC = (): ReactElement => {
                 <Header />
                 <AddTodo addTodo={addTodo} />
                 <TodoList
+                    filter={filter}
                     filteredTodoList={filteredTodoList}
                     clearCompletedTodo={clearCompletedTodo}
                     handleEdit={handleEdit}
