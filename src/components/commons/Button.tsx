@@ -16,6 +16,11 @@ const Button: FC<ButtonProps> = ({
     children,
     ...props
 }): ReactElement => {
+    const hover: {[key: string]: string | null} = {
+        bgColor: "none",
+        color: disabled ? null : "#fff",
+    };
+
     return (
         <ChakraButton
             fontSize={"0.7rem"}
@@ -25,7 +30,7 @@ const Button: FC<ButtonProps> = ({
             onClick={handleClick}
             bg={"none"}
             color={"placeholderColor"}
-            _hover={{bgColor: "none", color: "#fff"}}
+            _hover={hover}
             _active={{bgColor: "none"}}
             _focus={{boxShadow: "none"}}
             {...props}
