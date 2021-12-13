@@ -14,10 +14,15 @@ const Checkbox: FC<TodoWithCheckboxProps> = ({
 }): ReactElement => {
     return (
         <ChakraCheckbox
+            size={"lg"}
+            pl={"1rem"}
             isChecked={value}
             name={name}
             value={value}
             onChange={onChange}
+            transition={{
+                duration: "3000ms",
+            }}
         />
     );
 };
