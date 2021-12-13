@@ -5,24 +5,11 @@ import {
     ButtonProps as ChakraButtonProps,
 } from "@chakra-ui/react";
 
-interface ButtonProps extends ChakraButtonProps {
-    handleClick: () => void;
-}
-
-const Button: FC<ButtonProps> = ({
-    type = "button",
-    disabled = false,
-    handleClick,
-    children,
-    ...props
-}): ReactElement => {
+const Button: FC<ChakraButtonProps> = ({children, ...props}): ReactElement => {
     return (
         <ChakraButton
             fontSize={"0.7rem"}
             p={0}
-            type={type}
-            disabled={disabled}
-            onClick={handleClick}
             bg={"none"}
             color={"placeholderColor"}
             _active={{bgColor: "none"}}

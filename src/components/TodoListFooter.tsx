@@ -55,7 +55,7 @@ const FooterTodoList: FC<
                         type={"button"}
                         color={isActive ? "brightBlue" : "placeholderColor"}
                         disabled={isDisabled}
-                        handleClick={() => setFilter(btn.filter)}
+                        onClick={() => setFilter(btn.filter)}
                         _hover={{
                             bgColor: "none",
                             color: isDisabled || isActive ? "none" : "#fff",
@@ -87,7 +87,7 @@ const FooterTodoList: FC<
                 w={"20%"}
                 type={"button"}
                 disabled={!includesCompletedTodo ? true : false}
-                handleClick={() => clearCompletedTodo()}
+                onClick={() => clearCompletedTodo()}
             >
                 {"Clear Completed"}
             </Button>
