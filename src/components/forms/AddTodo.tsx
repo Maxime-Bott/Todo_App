@@ -28,7 +28,7 @@ const AddTodo: FC<Pick<UseTodoReturnProps, "addTodo">> = ({
     return (
         <Box
             w={"100%"}
-            bg={"desaturetBlue"}
+            bg={"var(--bg-todo)"}
             mt={"2rem"}
             h={"3.4rem"}
             d={"flex"}

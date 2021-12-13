@@ -15,7 +15,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     filter,
     statusOfTodo,
 }): ReactElement => {
-    let $content: Nullable<ReactElement> = (
+    let $todoList: Nullable<ReactElement> = (
         <Box
             minH={"3.4rem"}
             d={"flex"}
@@ -23,14 +23,14 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
             justifyContent={"center"}
             borderBottom={"1px solid"}
             borderColor={"borderGreyish"}
-            color={"#fff"}
+            color={"var(--text-todo)"}
         >
             <Text>{"Your todo list is empty."}</Text>
         </Box>
     );
 
     if (filteredTodoList.length > 0) {
-        $content = (
+        $todoList = (
             <List d={"flex"} flexDir={"column"}>
                 {filteredTodoList.map((todo: TodoObject, i: number) => {
                     return (
@@ -40,7 +40,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
                             d={"flex"}
                             alignItems={"center"}
                             borderBottom={"1px solid"}
-                            borderColor={"borderGreyish"}
+                            borderColor={"var(--border-color)"}
                         >
                             <ListItem d={"flex"}>
                                 <Checkbox
@@ -59,8 +59,8 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
                                         }
                                         color={
                                             todo.isCompleted
-                                                ? "placeholderColor"
-                                                : "#fff"
+                                                ? "var(--completed-todo)"
+                                                : "var(--text-todo)"
                                         }
                                     >
                                         {todo.todo}
@@ -75,8 +75,13 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     }
 
     return (
-        <Box my={"1.5rem"} bg={"desaturetBlue"} boxShadow={"xl"}>
-            {$content}
+        <Box
+            my={"1.5rem"}
+            bg={"var(--bg-todo)"}
+            boxShadow={"xl"}
+            borderRadius={"4px"}
+        >
+            {$todoList}
             <TodoListFooter
                 clearCompletedTodo={clearCompletedTodo}
                 setFilter={setFilter}

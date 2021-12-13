@@ -53,12 +53,17 @@ const FooterTodoList: FC<
                     <Button
                         key={`btn-${i}`}
                         type={"button"}
-                        color={isActive ? "brightBlue" : "placeholderColor"}
+                        color={
+                            isActive ? "brightBlue" : "var(--completed-todo)"
+                        }
                         disabled={isDisabled}
                         onClick={() => setFilter(btn.filter)}
                         _hover={{
                             bgColor: "none",
-                            color: isDisabled || isActive ? "none" : "#fff",
+                            color:
+                                isDisabled || isActive
+                                    ? "none"
+                                    : "var(--todo-text)",
                         }}
                     >
                         {btn.text}
@@ -71,15 +76,16 @@ const FooterTodoList: FC<
     return (
         <Box
             d={"flex"}
-            bg={"desaturetBlue"}
+            bgColor={"var(--bg-todo)"}
             alignItems={"center"}
             justifyContent={"space-between"}
             px={"1rem"}
         >
             <Text
                 display={{base: "none", sm: "block"}}
-                color={"placeholderColor"}
+                color={"var(--completed-todo)"}
                 fontSize={"0.7rem"}
+                fontWeight={"bold"}
             >
                 {`${numberOfActivatedTodo} ${
                     !numberOfActivatedTodo ? "item" : "items"
@@ -91,6 +97,15 @@ const FooterTodoList: FC<
                 type={"button"}
                 disabled={!includesCompletedTodo ? true : false}
                 onClick={() => clearCompletedTodo()}
+                color={
+                    includesCompletedTodo
+                        ? "var(--completed-todo)"
+                        : "var(--completed-todo)"
+                }
+                _hover={{
+                    bgColor: "none",
+                    color: !includesCompletedTodo ? "none" : "var(--todo-tex)",
+                }}
             >
                 {"Clear Completed"}
             </Button>
