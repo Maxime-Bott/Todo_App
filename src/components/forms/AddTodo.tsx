@@ -26,9 +26,18 @@ const AddTodo: FC<Pick<UseTodoReturnProps, "addTodo">> = ({
     };
 
     return (
-        <Box w={"100%"}>
-            <form onSubmit={handleSubmit}>
-                <Box d={"flex"}>
+        <Box
+            w={"100%"}
+            bg={"desaturetBlue"}
+            mt={"2rem"}
+            h={"3.4rem"}
+            d={"flex"}
+            alignItems={"center"}
+            boxShadow={"md"}
+            borderRadius={"3px"}
+        >
+            <Box as={"form"} onSubmit={handleSubmit} w={"100%"}>
+                <Box d={"flex"} alignItems={"center"}>
                     <Checkbox
                         name={"isCompleted"}
                         value={inputs.isCompleted}
@@ -41,9 +50,13 @@ const AddTodo: FC<Pick<UseTodoReturnProps, "addTodo">> = ({
                         name={"todo"}
                         value={inputs.todo}
                         placeholder={"Create a new todo ..."}
+                        mr={"1rem"}
+                        _focus={{
+                            boxShadow: "none",
+                        }}
                     />
                 </Box>
-            </form>
+            </Box>
         </Box>
     );
 };

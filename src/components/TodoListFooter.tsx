@@ -1,13 +1,16 @@
 import {FC, ReactElement} from "react";
-import {Box, Button, Text} from "@chakra-ui/react";
+import {Box, Text} from "@chakra-ui/react";
+
+import Button from "components/commons/Button";
+
 import {UseTodoReturnProps} from "hooks/useTodo";
 
 const FooterTodoList: FC<
     Pick<
         UseTodoReturnProps,
-        "setFilter" | "clearCompletedTodo" | "statusOfTodo"
+        "setFilter" | "clearCompletedTodo" | "statusOfTodo" | "filter"
     >
-> = ({setFilter, clearCompletedTodo, statusOfTodo}): ReactElement => {
+> = ({setFilter, filter, clearCompletedTodo, statusOfTodo}): ReactElement => {
     const {
         includesActivatedTodo,
         includesCompletedTodo,
@@ -16,35 +19,60 @@ const FooterTodoList: FC<
     } = statusOfTodo();
 
     return (
-        <Box d={"flex"} bg={"desaturetBlue"}>
+        <Box
+            d={"flex"}
+            bg={"desaturetBlue"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+            px={"1rem"}
+        >
             {numberOfActivatedTodo > 0 && (
-                <Text>{`${numberOfActivatedTodo} items left`}</Text>
+                <Text color={"placeholderColor"} fontSize={"0.7rem"} w={"20%"}>
+                    {`${numberOfActivatedTodo} items left`}
+                </Text>
             )}
-            <Button
-                type={"button"}
-                disabled={TodoLength === 0 ? true : false}
-                onClick={() => setFilter("ALL")}
+            <Box
+                d={"flex"}
+                w={"40%"}
+                px={"0.5rem"}
+                justifyContent={"space-between"}
             >
-                {"All"}
-            </Button>
+                <Button
+                    type={"button"}
+                    color={filter === "ALL" ? "brightBlue" : "placeholderColor"}
+                    disabled={TodoLength === 0 ? true : false}
+                    handleClick={() => setFilter("ALL")}
+                >
+                    {"All"}
+                </Button>
+                <Button
+                    type={"button"}
+                    color={
+                        filter === "ACTIVE" ? "brightBlue" : "placeholderColor"
+                    }
+                    disabled={includesActivatedTodo ? false : true}
+                    handleClick={() => setFilter("ACTIVE")}
+                >
+                    {"Active"}
+                </Button>
+                <Button
+                    type={"button"}
+                    color={
+                        filter === "COMPLETED"
+                            ? "brightBlue"
+                            : "placeholderColor"
+                    }
+                    disabled={includesCompletedTodo ? false : true}
+                    handleClick={() => setFilter("COMPLETED")}
+                >
+                    {"Completed"}
+                </Button>
+            </Box>
             <Button
-                type={"button"}
-                disabled={includesActivatedTodo ? false : true}
-                onClick={() => setFilter("ACTIVE")}
-            >
-                {"Active"}
-            </Button>
-            <Button
-                type={"button"}
-                disabled={includesCompletedTodo ? false : true}
-                onClick={() => setFilter("COMPLETED")}
-            >
-                {"Completed"}
-            </Button>
-            <Button
+                w={"20%"}
                 type={"button"}
                 disabled={!includesCompletedTodo ? true : false}
-                onClick={() => clearCompletedTodo()}
+                handleClick={() => clearCompletedTodo()}
             >
                 {"Clear Completed"}
             </Button>

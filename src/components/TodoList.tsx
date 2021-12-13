@@ -5,13 +5,14 @@ import {List, Box, ListItem, Text} from "@chakra-ui/react";
 import {UseTodoReturnProps, TodoObject} from "hooks/useTodo";
 
 import Checkbox from "components/forms/Checkbox";
-import FooterTodoList from "components/TodoListFooter";
+import TodoListFooter from "components/TodoListFooter";
 
 const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     filteredTodoList,
     clearCompletedTodo,
     handleEdit,
     setFilter,
+    filter,
     statusOfTodo,
 }): ReactElement => {
     let $content: Nullable<ReactElement> = (
@@ -23,7 +24,14 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
             <List d={"flex"} flexDir={"column"} bg={"desaturetBlue"}>
                 {filteredTodoList.map((todo: TodoObject, i: number) => {
                     return (
-                        <Box key={`todo-item-${i}`}>
+                        <Box
+                            key={`todo-item-${i}`}
+                            h={"3.4rem"}
+                            d={"flex"}
+                            alignItems={"center"}
+                            borderBottom={"1px solid"}
+                            borderColor={"borderGreyish"}
+                        >
                             <ListItem d={"flex"}>
                                 <Checkbox
                                     name={"isCompleted"}
@@ -31,10 +39,16 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
                                     onChange={e => handleEdit(e, todo)}
                                 />
                                 <Text
+                                    px={4}
                                     textDecor={
                                         todo.isCompleted
                                             ? "line-through"
                                             : "none"
+                                    }
+                                    color={
+                                        todo.isCompleted
+                                            ? "placeholderColor"
+                                            : "#fff"
                                     }
                                 >
                                     {todo.todo}
@@ -48,12 +62,13 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     }
 
     return (
-        <Box>
+        <Box mt={"1rem"}>
             {$content}
-            <FooterTodoList
+            <TodoListFooter
                 clearCompletedTodo={clearCompletedTodo}
                 setFilter={setFilter}
                 statusOfTodo={statusOfTodo}
+                filter={filter}
             />
         </Box>
     );
