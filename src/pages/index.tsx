@@ -20,6 +20,7 @@ const Homepage: FC = (): ReactElement => {
         handleEdit,
         setFilter,
         statusOfTodo,
+        deleteTodo,
     } = useTodo(fakeTodo);
 
     const bgImage: string = useColorModeValue(lightHeroBanner, darkHeroBanner);
@@ -51,6 +52,7 @@ const Homepage: FC = (): ReactElement => {
                     handleEdit={handleEdit}
                     setFilter={setFilter}
                     statusOfTodo={statusOfTodo}
+                    deleteTodo={deleteTodo}
                 />
             </Box>
             <Center>

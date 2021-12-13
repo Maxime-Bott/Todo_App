@@ -1,6 +1,7 @@
 import {Nullable} from "@types";
 import {FC, ReactElement} from "react";
-import {List, Box, ListItem, Text} from "@chakra-ui/react";
+import {List, Box, ListItem, Text, IconButton} from "@chakra-ui/react";
+import {VscClose} from "react-icons/vsc";
 
 import {UseTodoReturnProps, TodoObject} from "hooks/useTodo";
 
@@ -14,6 +15,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
     setFilter,
     filter,
     statusOfTodo,
+    deleteTodo,
 }): ReactElement => {
     let $todoList: Nullable<ReactElement> = (
         <Box
@@ -38,11 +40,12 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
                             key={`todo-item-${i}`}
                             minH={"3.4rem"}
                             d={"flex"}
+                            justifyContent={"space-between"}
                             alignItems={"center"}
                             borderBottom={"1px solid"}
                             borderColor={"var(--border-color)"}
                         >
-                            <ListItem d={"flex"}>
+                            <ListItem d={"flex"} alignItems={"center"}>
                                 <Checkbox
                                     name={"isCompleted"}
                                     value={todo.isCompleted}
@@ -67,6 +70,15 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
                                     </Text>
                                 </Box>
                             </ListItem>
+                            <IconButton
+                                aria-label={"delete-btn"}
+                                onClick={() => deleteTodo(todo.id)}
+                                icon={<VscClose color={"hsl(236, 9%, 61%)"} />}
+                                bg={"none"}
+                                _hover={{bg: "none"}}
+                                _focus={{boxShadow: "none"}}
+                                _active={{bg: "none"}}
+                            />
                         </Box>
                     );
                 })}

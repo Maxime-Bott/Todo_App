@@ -13,6 +13,7 @@ export interface UseTodoReturnProps {
     filter: string;
     addTodo: (inputs: TodoObject) => void;
     clearCompletedTodo: () => void;
+    deleteTodo: (id: string) => void;
     handleEdit: (e: FormEvent, updatedTodo: TodoObject) => void;
     setFilter: (f: string) => void;
     statusOfTodo: () => {
@@ -61,6 +62,11 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
         clearCompletedTodo: () => {
             setTodo(todoList.filter((t: TodoObject) => !t.isCompleted));
             setFilter("ALL");
+        },
+
+        deleteTodo: id => {
+            const newTodo: TodoArray = todoList.filter(todo => todo.id !== id);
+            setTodo(newTodo);
         },
 
         handleEdit: (e, updatedTodo) => {
