@@ -10,6 +10,7 @@ type TodoArray = TodoObject[];
 
 export interface UseTodoReturnProps {
     filteredTodoList: TodoArray;
+    filter: string;
     addTodo: (inputs: TodoObject) => void;
     clearCompletedTodo: () => void;
     handleEdit: (e: FormEvent, updatedTodo: TodoObject) => void;
@@ -50,6 +51,7 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
     return {
         setFilter,
         filteredTodoList,
+        filter,
         addTodo: inputs => {
             if (inputs.todo.trim()) {
                 setTodo([...todoList, inputs]);
