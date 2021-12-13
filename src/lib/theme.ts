@@ -18,6 +18,11 @@ const styles: {[key: string]: any} = {
             fontSize: "16px",
             bgColor: mode("hsl(0, 0%, 98%)", "hsl(235, 21%, 11%)")(props),
         },
+        button: {
+            _disabled: {
+                _hover: "none",
+            },
+        },
     }),
 };
 
