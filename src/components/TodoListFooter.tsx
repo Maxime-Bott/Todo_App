@@ -97,11 +97,7 @@ const FooterTodoList: FC<
                 type={"button"}
                 disabled={!includesCompletedTodo ? true : false}
                 onClick={() => clearCompletedTodo()}
-                color={
-                    includesCompletedTodo
-                        ? "var(--completed-todo)"
-                        : "var(--completed-todo)"
-                }
+                color={"var(--completed-todo)"}
                 _hover={{
                     bgColor: "none",
                     color: !includesCompletedTodo ? "none" : "var(--todo-tex)",
