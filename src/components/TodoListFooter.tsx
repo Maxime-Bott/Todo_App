@@ -2,8 +2,13 @@ import {FC, ReactElement, useMemo} from "react";
 import {Box, Text} from "@chakra-ui/react";
 
 import Button from "components/commons/Button";
-
 import {UseTodoReturnProps} from "hooks/useTodo";
+
+type FilterButtonsType = {
+    text: string;
+    filter: string;
+    disabledComparator: boolean | number;
+};
 
 const FooterTodoList: FC<
     Pick<
@@ -18,7 +23,7 @@ const FooterTodoList: FC<
         TodoLength,
     } = statusOfTodo();
 
-    const filterButtonsProps: {[key: string]: any}[] = useMemo(
+    const filterButtonsProps: FilterButtonsType[] = useMemo(
         () => [
             {
                 text: "All",
