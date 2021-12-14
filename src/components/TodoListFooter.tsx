@@ -1,4 +1,4 @@
-import {FC, ReactElement} from "react";
+import {FC, ReactElement, useMemo} from "react";
 import {Box, Text} from "@chakra-ui/react";
 
 import Button from "components/commons/Button";
@@ -18,23 +18,26 @@ const FooterTodoList: FC<
         TodoLength,
     } = statusOfTodo();
 
-    const filterButtonsProps: {[key: string]: any}[] = [
-        {
-            text: "All",
-            filter: "ALL",
-            disabledComparator: TodoLength,
-        },
-        {
-            text: "Active",
-            filter: "ACTIVE",
-            disabledComparator: includesActivatedTodo,
-        },
-        {
-            text: "Completed",
-            filter: "COMPLETED",
-            disabledComparator: includesCompletedTodo,
-        },
-    ];
+    const filterButtonsProps: {[key: string]: any}[] = useMemo(
+        () => [
+            {
+                text: "All",
+                filter: "ALL",
+                disabledComparator: TodoLength,
+            },
+            {
+                text: "Active",
+                filter: "ACTIVE",
+                disabledComparator: includesActivatedTodo,
+            },
+            {
+                text: "Completed",
+                filter: "COMPLETED",
+                disabledComparator: includesCompletedTodo,
+            },
+        ],
+        [TodoLength, includesActivatedTodo, includesCompletedTodo],
+    );
 
     const $filterButtons: ReactElement = (
         <Box
