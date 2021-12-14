@@ -29,7 +29,7 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
     const [filteredTodoList, setFilteredTodoList] = useState(todoList);
     const [filter, setFilter] = useState("ALL");
 
-    const handleFilter: () => void = useCallback(() => {
+    const handleFilteredTodoList: () => void = useCallback(() => {
         switch (filter) {
             case "ALL":
                 setFilteredTodoList(todoList);
@@ -46,8 +46,8 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
     }, [todoList, filter]);
 
     useEffect(() => {
-        handleFilter();
-    }, [handleFilter]);
+        handleFilteredTodoList();
+    }, [handleFilteredTodoList]);
 
     return {
         setFilter,
