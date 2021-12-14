@@ -24,7 +24,7 @@ const TodoList: FC<Omit<UseTodoReturnProps, "addTodo">> = ({
             alignItems={"center"}
             justifyContent={"center"}
             borderBottom={"1px solid"}
-            borderColor={"borderGreyish"}
+            borderColor={"var(--border-color)"}
             color={"var(--text-todo)"}
         >
             <Text>{"Your todo list is empty."}</Text>
