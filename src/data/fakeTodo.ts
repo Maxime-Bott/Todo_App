@@ -1,7 +1,7 @@
 import {TodoObject} from "hooks/useTodo";
 
 export const fakeTodo: TodoObject[] = [
-    {todo: "Loaded", isCompleted: true, id: `id-${Date.now()}`},
+    {todo: "Loading", isCompleted: true, id: `id-${Date.now()}`},
     {todo: "Hello World", isCompleted: false, id: `id-1${Date.now()}`},
     {
         todo: "Thanks for watching",
