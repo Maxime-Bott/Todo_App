@@ -25,7 +25,7 @@ export interface UseTodoReturnProps {
 }
 
 export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
-    const [todoList, setTodo] = useState(initialValue);
+    const [todoList, setTodoList] = useState(initialValue);
     const [filteredTodoList, setFilteredTodoList] = useState(todoList);
     const [filter, setFilter] = useState("ALL");
 
@@ -55,18 +55,18 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
         filter,
         addTodo: inputs => {
             if (inputs.todo.trim()) {
-                setTodo([...todoList, inputs]);
+                setTodoList([...todoList, inputs]);
             }
         },
 
         clearCompletedTodo: () => {
-            setTodo(todoList.filter((t: TodoObject) => !t.isCompleted));
+            setTodoList(todoList.filter((t: TodoObject) => !t.isCompleted));
             setFilter("ALL");
         },
 
         deleteTodo: id => {
             const newTodo: TodoArray = todoList.filter(todo => todo.id !== id);
-            setTodo(newTodo);
+            setTodoList(newTodo);
         },
 
         handleEdit: (e, updatedTodo) => {
@@ -79,7 +79,8 @@ export const useTodo = (initialValue: TodoArray): UseTodoReturnProps => {
                 }
                 return t;
             });
-            setTodo(newTodo);
+
+            setTodoList(newTodo);
         },
 
         statusOfTodo: () => {
