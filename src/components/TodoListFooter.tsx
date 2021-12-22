@@ -10,7 +10,7 @@ type FilterButtonsType = {
     disabledComparator: boolean | number;
 };
 
-const FooterTodoList: FC<
+const TodoListFooter: FC<
     Pick<
         UseTodoReturnProps,
         "setFilter" | "clearCompletedTodo" | "statusOfTodo" | "filter"
@@ -52,9 +52,7 @@ const FooterTodoList: FC<
             justifyContent={"space-between"}
         >
             {filterButtonsProps.map((btn, i) => {
-                const isDisabled: boolean = btn.disabledComparator
-                    ? false
-                    : true;
+                const isDisabled: boolean = !btn.disabledComparator;
 
                 const isActive: boolean = filter === btn.filter;
                 return (
@@ -117,4 +115,4 @@ const FooterTodoList: FC<
     );
 };
 
-export default FooterTodoList;
+export default TodoListFooter;

@@ -51,6 +51,7 @@ const AddTodo: FC<Pick<UseTodoReturnProps, "addTodo">> = ({
                         value={inputs.todo}
                         placeholder={"Create a new todo ..."}
                         mr={"1rem"}
+                        autoComplete={"off"}
                         _focus={{
                             boxShadow: "none",
                         }}
